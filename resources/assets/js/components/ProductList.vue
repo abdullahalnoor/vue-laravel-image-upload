@@ -13,12 +13,12 @@
 
     <tbody>
       <tr v-for="(item,index) in product" :key="index">
-        <td> {{item.name}} </td>
+        <td> {{item.id}} </td>
         <td> {{item.price}} </td>
         <td> {{item.description}} </td>
         <td> <img :src="item.image" alt="fgd" class="img-responsive " style="width:100px;height:100px"> </td>
         <td>
-          <router-link to="/" class="btn btn-info"> Edit</router-link>
+          <router-link :to="{name:'editProduct',params:{id:item.id}}" class="btn btn-info"> Edit</router-link>
           <router-link to="/" class="btn btn-danger"> Delete</router-link>
         </td>
       </tr>
