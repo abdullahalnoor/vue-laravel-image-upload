@@ -27,6 +27,7 @@
     </div>
     <div class="form-group">
       <input type="submit"  value="Update" class="btn btn-primary">
+      <router-link class="btn btn-warning" to="/view-products">Back</router-link>
     </div>
    </form>
 

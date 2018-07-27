@@ -16,6 +16,7 @@ const AddImage = require("./components/AddImage.vue");
 const Product = require("./components/Product.vue");
 const ProductList = require('./components/ProductList.vue');
 const EditProduct = require('./components/EditProdcut.vue');
+const MultiImage = require('./components/MultiImage.vue');
 
 const routes = [{
         path: '/',
@@ -33,6 +34,10 @@ const routes = [{
         path: "/edit-product/:id",
         component: EditProduct,
         name: 'editProduct'
+    },
+    {
+        path: '/multi-image',
+        component: MultiImage
     }
 
 ]

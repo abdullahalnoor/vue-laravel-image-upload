@@ -7,6 +7,11 @@
     </div>
 
     <div class="form-group">
+      <label for="">Add Name</label>
+      <input type="text" v-model="list.name" class="form-control" >
+    </div>
+
+    <div class="form-group">
        <a href="" class="btn btn-primary" @click="uploadImage">Upload</a>
     </div>
     </div>  
@@ -17,6 +22,9 @@ export default {
   name: "add-image",
   data() {
     return {
+      list: {
+        name: ""
+      },
       imageFIle: null,
 
       formData: new FormData()
@@ -31,6 +39,7 @@ export default {
     },
     uploadImage() {
       this.formData.append("image", this.imageFIle);
+      this.formData.append("name", this.list.name);
       // console.log(this.formData);
       const config = { headers: { "Content-Type": "multipart/form-data" } };
 

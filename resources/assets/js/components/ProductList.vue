@@ -13,7 +13,7 @@
 
     <tbody>
       <tr v-for="(item,index) in product" :key="index">
-        <td> {{item.id}} </td>
+        <td> {{item.name}} </td>
         <td> {{item.price}} </td>
         <td> {{item.description}} </td>
         <td> <img :src="item.image" alt="fgd" class="img-responsive " style="width:100px;height:100px"> </td>

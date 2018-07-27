@@ -17,9 +17,9 @@ class ImageUploadController extends Controller
        $productImage->move($imageDrectory,$imageName);
        $imageUrl = $imageDrectory.$imageName;
 
-        if($request->has('name')){
+
             $uploads->name =  $request->name;
-        }
+        
 
         $uploads->image = $imageUrl;
         $uploads->save();
