@@ -47,4 +47,27 @@ class ImageUploadController extends Controller
         return request()->json(1,$file);
 
     }
+
+    
+    public function getFIles(){
+        $subImage =  SubImage::get();
+        $uploads  =  ImageUpload::get();
+        return request()->json(1,[
+            'uploads'=>$uploads,
+            'subImage'=>$subImage
+            ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

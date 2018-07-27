@@ -14003,7 +14003,7 @@ var AddImage = __webpack_require__(41);
 var Product = __webpack_require__(44);
 var ProductList = __webpack_require__(47);
 var EditProduct = __webpack_require__(50);
-var MultiImage = __webpack_require__(53);
+var ViewImages = __webpack_require__(62);
 
 var routes = [{
     path: '/',
@@ -14019,8 +14019,8 @@ var routes = [{
     component: EditProduct,
     name: 'editProduct'
 }, {
-    path: '/multi-image',
-    component: MultiImage
+    path: '/view-images',
+    component: ViewImages
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -50918,15 +50918,29 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(64)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50943,7 +50957,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\MultiImage.vue"
+Component.options.__file = "resources\\assets\\js\\components\\ViewImages.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -50952,9 +50966,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-05384959", Component.options)
+    hotAPI.createRecord("data-v-05520498", Component.options)
   } else {
-    hotAPI.reload("data-v-05384959", Component.options)
+    hotAPI.reload("data-v-05520498", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -50965,7 +50979,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50975,18 +50989,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      image: {},
+      subImage: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get("http://localhost/vlp-1/public/get-files").then(function (res) {
+      console.log(res.data.subImage);
+      _this.image = res.data.uploads;
+      _this.subImage = res.data.subImage;
+    });
+  }
+});
 
 /***/ }),
-/* 55 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-12" })
+  return _c("div", { staticClass: "col-md-12" }, [
+    _c(
+      "ol",
+      _vm._l(_vm.image, function(data, index) {
+        return _c("li", { key: index }, [
+          _c("img", {
+            staticStyle: { width: "50px", height: "50px" },
+            attrs: { src: data.image, alt: "" }
+          }),
+          _vm._v(" "),
+          _c(
+            "ol",
+            _vm._l(_vm.subImage, function(item, index) {
+              return data.id == item.parent_id
+                ? _c("li", { key: index }, [
+                    _c("img", {
+                      staticStyle: { width: "50px", height: "50px" },
+                      attrs: { src: item.name, alt: "" }
+                    })
+                  ])
+                : _vm._e()
+            })
+          )
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50994,15 +51062,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-05384959", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-05520498", module.exports)
   }
 }
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

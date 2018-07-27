@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::post('/upload','ImageUploadController@uploadImage');
+Route::get('/get-files','ImageUploadController@getFIles');
 Route::post('/product','ProductController@store');
 Route::get('/view-products','ProductController@index');
 Route::get('/edit-product/{id}','ProductController@edit');
