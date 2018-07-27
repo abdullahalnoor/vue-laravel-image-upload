@@ -50155,6 +50155,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -50165,7 +50169,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         description: "",
         image: ""
       },
-      successMsg: ""
+      successMsg: "",
+      errors: {}
     };
   },
 
@@ -50188,6 +50193,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post("http://localhost/vlp-1/public/product", this.$data.product).then(function (res) {
         _this2.$router.push({ path: "/view-products" });
         successMsg = "Product info added successfully..";
+      }).catch(function (err) {
+        _this2.errors = err.response.data.errors;
       });
     }
   }
@@ -50221,7 +50228,13 @@ var render = function() {
             staticClass: "form-control",
             attrs: { type: "file", accept: "image/*" },
             on: { change: _vm.changeImage }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.image
+            ? _c("span", { staticClass: "text-danger font-weight-bold" }, [
+                _vm._v("  " + _vm._s(_vm.errors.image[0]) + " ")
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -50247,11 +50260,17 @@ var render = function() {
                 _vm.$set(_vm.product, "name", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.name
+            ? _c("span", { staticClass: "text-danger font-weight-bold" }, [
+                _vm._v("  " + _vm._s(_vm.errors.name[0]) + " ")
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Price")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -50273,11 +50292,17 @@ var render = function() {
                 _vm.$set(_vm.product, "price", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.price
+            ? _c("span", { staticClass: "text-danger font-weight-bold" }, [
+                _vm._v("  " + _vm._s(_vm.errors.price[0]) + " ")
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
+          _c("label", { attrs: { for: "" } }, [_vm._v("description")]),
           _vm._v(" "),
           _c("textarea", {
             directives: [
@@ -50299,7 +50324,13 @@ var render = function() {
                 _vm.$set(_vm.product, "description", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.description
+            ? _c("span", { staticClass: "text-danger font-weight-bold" }, [
+                _vm._v("  " + _vm._s(_vm.errors.description[0]) + " ")
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _vm._m(0)
@@ -50791,7 +50822,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
         staticClass: "btn btn-primary",
-        attrs: { type: "submit", value: "Create" }
+        attrs: { type: "submit", value: "Update" }
       })
     ])
   }

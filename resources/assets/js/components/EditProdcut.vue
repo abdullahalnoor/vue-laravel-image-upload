@@ -26,7 +26,7 @@
       <textarea type="text" v-model="product.description" class="form-control" ></textarea>
     </div>
     <div class="form-group">
-      <input type="submit"  value="Create" class="btn btn-primary">
+      <input type="submit"  value="Update" class="btn btn-primary">
     </div>
    </form>
 

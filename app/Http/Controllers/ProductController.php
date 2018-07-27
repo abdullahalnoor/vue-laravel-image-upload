@@ -17,6 +17,15 @@ class ProductController extends Controller
 
 
     public function store(Request $request){
+
+
+        $this->validate($request,[
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,jpg,png',
+        ]);
+
         $product = new Product();
 
         $exploded = explode(',',$request->image);
