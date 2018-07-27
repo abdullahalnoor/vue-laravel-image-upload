@@ -13976,7 +13976,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(56);
 
 
 /***/ }),
@@ -14003,7 +14003,7 @@ var AddImage = __webpack_require__(41);
 var Product = __webpack_require__(44);
 var ProductList = __webpack_require__(47);
 var EditProduct = __webpack_require__(50);
-var MultiImage = __webpack_require__(58);
+var MultiImage = __webpack_require__(53);
 
 var routes = [{
     path: '/',
@@ -50011,6 +50011,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "add-image",
@@ -50020,8 +50026,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: ""
       },
       imageFIle: null,
+      multiImgFiles: [],
 
-      formData: new FormData()
+      formData: new FormData(),
+
+      errors: {}
     };
   },
 
@@ -50029,17 +50038,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     fileChange: function fileChange(e) {
       // console.log(e);
       var selecFIle = e.target.files[0];
-      // console.log(selecFIle);
+
       this.imageFIle = selecFIle;
+      console.log(this.imageFIle);
+    },
+    multiFileChange: function multiFileChange(e) {
+      var selectedFiles = e.target.files;
+      if (!selectedFiles.length) {
+        return false;
+      }
+      for (var i = 0; i < selectedFiles.length; i++) {
+        this.multiImgFiles.push(selectedFiles[i]);
+      }
+      console.log(this.multiImgFiles);
     },
     uploadImage: function uploadImage() {
+      var _this = this;
+
       this.formData.append("image", this.imageFIle);
       this.formData.append("name", this.list.name);
+
+      for (var i = 0; i < this.multiImgFiles.length; i++) {
+        this.formData.append("images[]", this.multiImgFiles[i]);
+      }
+
       // console.log(this.formData);
       var config = { headers: { "Content-Type": "multipart/form-data" } };
 
       axios.post("http://localhost/vlp-1/public/upload", this.formData, config).then(function (res) {
         return console.log(res);
+      }).catch(function (err) {
+        _this.errors = err.response.data.errors;
+        console.log(_this.errors);
       });
     }
   }
@@ -50062,6 +50092,20 @@ var render = function() {
           staticClass: "form-control",
           attrs: { type: "file", accept: "image/*" },
           on: { change: _vm.fileChange }
+        }),
+        _vm._v(" "),
+        _vm.errors.imageFIle
+          ? _c("span", [_vm._v(" " + _vm._s(_vm.errors.imageFIle) + " ")])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "" } }, [_vm._v("Add Images(3)")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "file", multiple: "", accept: "image/*" },
+          on: { change: _vm.multiFileChange }
         })
       ]),
       _vm._v(" "),
@@ -50875,24 +50919,14 @@ if (false) {
 
 /***/ }),
 /* 53 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(60)
+var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(59)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50931,7 +50965,21 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 59 */
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50951,18 +50999,10 @@ if (false) {
 }
 
 /***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 56 */
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
