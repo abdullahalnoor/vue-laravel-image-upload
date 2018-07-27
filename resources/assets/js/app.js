@@ -14,6 +14,7 @@ Vue.use(VueRouter);
 
 const AddImage = require("./components/AddImage.vue");
 const Product = require("./components/Product.vue");
+const ProductList = require('./components/ProductList.vue');
 
 const routes = [{
         path: '/',
@@ -22,6 +23,10 @@ const routes = [{
     {
         path: '/product',
         component: Product
+    },
+    {
+        path: '/view-products',
+        component: ProductList
     }
 
 ]

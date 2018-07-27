@@ -7,6 +7,15 @@ use App\Product;
 
 class ProductController extends Controller
 {
+
+
+    public function index(){
+        $products =  Product::orderBy('id','desc')->paginate(5);
+        return request()->json(100,$products);
+    }
+
+
+
     public function store(Request $request){
         $product = new Product();
 

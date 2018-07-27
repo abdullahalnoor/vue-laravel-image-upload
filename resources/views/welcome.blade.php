@@ -17,6 +17,7 @@
         <nav class="nav justify-content-center|justify-content-end">
 
             <router-link to="/" class="nav-link">Add Image</router-link>
+            <router-link to="/view-products" class="nav-link">View Products</router-link>
             <router-link to="/product" class="nav-link">Add Product</router-link>
         </nav>
 

@@ -33,7 +33,8 @@ export default {
         price: "",
         description: "",
         image: ""
-      }
+      },
+      successMsg: ""
     };
   },
 
@@ -50,7 +51,10 @@ export default {
     create() {
       axios
         .post("http://localhost/vlp-1/public/product", this.$data.product)
-        .then(res => console.log(this.product));
+        .then(res => {
+          this.$router.push({ path: "/view-products" });
+          successMsg = "Product info added successfully..";
+        });
     }
   }
 };
